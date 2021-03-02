@@ -1,0 +1,28 @@
+{
+  "infos": [
+    {
+      "id": "0",
+      "title": "Get Shareable Links",
+      "contents": "Click New Meeting to receive a link to send to people you want to invite to the meeting",
+      "img": "../../images/info1.png"
+    },
+    {
+      "id": "1",
+      "title": "See all",
+      "contents": "To see more participants at the same time, go to the Change Layout in the More Options menu",
+      "img": "../../images/info2.png"
+    },
+    {
+      "id": "2",
+      "title": "Schedule a meeting",
+      "contents": "Click New Meeting to schedule a meeting in Google Calendar and send invitations to participants.",
+      "img": "../../images/info3.png"
+    },
+    {
+      "id": "3",
+      "title": "Safe meeting",
+      "contents": "Only userers invited or allowed by the host can join the meeting",
+      "img": "../../images/info4.png"
+    }
+  ]
+}

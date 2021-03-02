@@ -82,6 +82,7 @@ h3 {
   border-radius: 8px;
   outline: none;
   padding: 1.3rem 2rem;
-  width: 25rem;
+  width: 20.4rem;
   transition: border-bottom 100ms ease;
+  color: makerGreen;
 }
