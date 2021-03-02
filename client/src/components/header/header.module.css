@@ -1,0 +1,17 @@
+@value makerWhite from '../../common/colors.css';
+@value headerFont from '../../common/size.css';
+
+header {
+  height: 8%;
+  width: 100%;
+  background-color: makerWhite;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: headerFont;
+  padding: 3rem;
+}
+
+.logo {
+  font-weight: 700;
+}
