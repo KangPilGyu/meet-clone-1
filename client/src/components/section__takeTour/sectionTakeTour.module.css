@@ -1,0 +1,59 @@
+@value makerGreen, makerGrey, makerlightblue from '../../common/colors.css';
+@value title, subTitle, mediaQuery from '../../common/size.css';
+
+.container {
+  height: 100vh;
+  width: 100%;
+  position: relative;
+}
+
+.background {
+  height: 80vh;
+  width: 100%;
+  background-color: makerGreen;
+  position: relative;
+}
+
+.img {
+  background-image: url('../../images/takeTourImg.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  position: absolute;
+  width: 60rem;
+  height: 75rem;
+  top: 15%;
+  left: 10%;
+  box-shadow: 9px 10px 18px -6px rgba(0, 0, 0, 0.5);
+}
+
+.explain {
+  position: absolute;
+  top: 20%;
+  right: 20%;
+}
+
+.takeTourTitle {
+  font-size: 9rem;
+  margin-bottom: 5rem;
+  color: white;
+  font-weight: 900;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+}
+
+.subDescContatiner {
+  position: absolute;
+  bottom: 5%;
+  left: 30%;
+}
+
+.description {
+  font-size: 3.2rem;
+  width: 60%;
+  text-align: center;
+  margin: auto;
+}

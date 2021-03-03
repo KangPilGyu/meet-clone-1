@@ -2,7 +2,7 @@
 @value headerFont from '../../common/size.css';
 
 header {
-  height: 8%;
+  height: 8vh;
   width: 100%;
   background-color: makerWhite;
   display: flex;
@@ -10,6 +10,7 @@ header {
   justify-content: space-between;
   font-size: headerFont;
   padding: 3rem;
+  box-shadow: 9px 10px 18px -6px rgba(0, 0, 0, 0.5);
 }
 
 .logo {
