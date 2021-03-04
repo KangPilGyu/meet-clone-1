@@ -5,7 +5,7 @@ const SectionTakeTour = () => {
   return (
     <div className={styles.container}>
       <div className={styles.background}>
-        <div className={styles.img}></div>
+        <img src="/images/takeTourImg.png" className={styles.img}></img>
         <div className={styles.explain}>
           <h1 className={styles.takeTourTitle}>
             Premium <br /> video <br />

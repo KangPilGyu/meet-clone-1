@@ -2,7 +2,7 @@
 @value title, subTitle, mediaQuery, mobileSize from '../../common/size.css';
 
 .background {
-  height: 80vh;
+  height: 760px;
   width: 100%;
   background-color: makerGreen;
   display: flex;
@@ -95,7 +95,7 @@
     margin-bottom: 1rem;
   }
   .developerInfo {
-    padding: 0.5rem;
+    padding: 5rem;
   }
   .question {
     font-size: 2.5rem;

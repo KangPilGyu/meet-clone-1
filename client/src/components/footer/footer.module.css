@@ -2,7 +2,7 @@
 @value title, subTitle, mediaQuery from '../../common/size.css';
 
 .background {
-  height: 8vh;
+  height: 80px;
   display: flex;
   justify-content: center;
   align-items: center;

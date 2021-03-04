@@ -2,7 +2,7 @@
 @value headerFont from '../../common/size.css';
 
 header {
-  height: 8vh;
+  height: 80px;
   width: 100%;
   background-color: makerWhite;
   display: flex;

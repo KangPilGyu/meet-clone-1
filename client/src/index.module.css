@@ -1,6 +1,6 @@
 @import './reset.css';
 @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;900&display=swap');
-@value mediaQuery, mobileSize from './common/size.css';
+@value mediaQuery, mobileSize, halfSize from './common/size.css';
 html {
   font-size: 62.5%;
 }
@@ -17,6 +17,12 @@ code {
   box-sizing: border-box;
 }
 
+@media (max-width: halfSize) {
+  html {
+    font-size: 50%;
+  }
+}
+
 @media (max-width: mediaQuery) {
   html {
     font-size: 40%;
@@ -25,6 +31,6 @@ code {
 
 @media (max-width: mobileSize) {
   html {
-    font-size: 30%;
+    font-size: 35%;
   }
 }
