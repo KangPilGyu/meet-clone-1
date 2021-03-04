@@ -12,6 +12,7 @@
 .icon {
   font-size: 4rem;
   cursor: pointer;
+  color: makerWhite;
 }
 .icon:not(:last-child) {
   margin-right: 1rem;

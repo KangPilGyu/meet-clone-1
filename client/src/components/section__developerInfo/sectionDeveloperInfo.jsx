@@ -1,20 +1,27 @@
 import React from 'react';
 import Button from '../button/button';
 import styles from './sectionDeveloperInfo.module.css';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
 
 const SectionDeveloperInfo = () => {
   return (
     <div className={styles.background}>
       <div className={styles.developerInfo}>
-        <div className={styles.select}>| Front-End | Back-End |</div>
+        <div className={styles.select}>
+          <span> | Front-End | Back-End |</span>
+        </div>
         <h1 className={styles.question}>If you have some Question or Comments?</h1>
+
         <div className={styles.avatar}></div>
-        <p className={styles.list}>
-          Hello! I am lee <br /> nice to see you guys
+        <p className={styles.welcome}>
+          Hello!
+          <br /> I am a Front-End Developer. <br /> Contact me if you have any questions or any
+          comments.
         </p>
-        <p className={styles.list}>Address: grigni@gmail.com</p>
-        <p className={styles.list}>GitHub: www.github.com/grigni</p>
-        <p className={styles.list}>Stack : JavaScript, HTML, CSS </p>
+        <p className={styles.list}>
+          <FontAwesomeIcon icon={faEnvelope} /> : GriGni@gmail.com
+        </p>
       </div>
       <form className={styles.email}>
         <input className={styles.commonStyle} type="text" placeholder="Enter your Name" />

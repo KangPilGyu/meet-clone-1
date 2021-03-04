@@ -1,10 +1,14 @@
 @value makerGreen, makerGrey, makerlightblue from '../../common/colors.css';
-@value title, subTitle, mediaQuery from '../../common/size.css';
+@value title, subTitle, mediaQuery, mobileSize from '../../common/size.css';
 
 .container {
   height: 100vh;
   width: 100%;
   position: relative;
+  background-image: url('../../images/takeTourBackground.png');
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
 }
 
 .background {
@@ -22,15 +26,18 @@
   position: absolute;
   width: 60rem;
   height: 75rem;
-  top: 15%;
-  left: 10%;
+  top: 4.3vw;
+  left: 9.7vw;
+  /* top: 15%;
+  left: 10%; */
+  /* transform: translate(50%, 50%); */
   box-shadow: 9px 10px 18px -6px rgba(0, 0, 0, 0.5);
 }
 
 .explain {
   position: absolute;
-  top: 20%;
-  right: 20%;
+  top: 6vw;
+  right: 20.8vw;
 }
 
 .takeTourTitle {
@@ -47,8 +54,9 @@
 
 .subDescContatiner {
   position: absolute;
-  bottom: 5%;
-  left: 30%;
+  bottom: 1vw;
+  left: 30vw;
+  visibility: visible;
 }
 
 .description {
@@ -56,4 +64,39 @@
   width: 60%;
   text-align: center;
   margin: auto;
+  background-color: rgba(246, 241, 235, 0.8);
+  padding: 2rem;
+  text-align: center;
+  border-top-left-radius: 0;
+  border-top-right-radius: 1rem;
+  border-bottom-left-radius: 1rem;
+  border-bottom-right-radius: 1rem;
+  box-shadow: 10px 11px 15px -5px rgba(0, 0, 0, 0.7);
+}
+.description::after {
+  border-top: 3vw solid rgba(246, 241, 235, 0.8);
+  border-left: 2vw solid transparent;
+  border-right: 0px solid transparent;
+  border-bottom: 0px solid transparent;
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 11.7vw;
+  width: 0.3rem;
+}
+
+@media screen and (max-width: mediaQuery) {
+  .container {
+  }
+  .explain {
+    top: 55vw;
+    left: 15vw;
+    text-shadow: 0px 3px 4px rgba(0, 0, 0, 0.58);
+  }
+  .subDescContatiner {
+    visibility: hidden;
+  }
+}
+
+@media screen and (max-width: mobileSize) {
 }

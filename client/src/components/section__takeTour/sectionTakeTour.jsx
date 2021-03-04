@@ -19,10 +19,10 @@ const SectionTakeTour = () => {
         </div>
       </div>
       <div className={styles.subDescContatiner}>
-        <p className={styles.description}>
+        <div className={styles.description}>
           The Google Meet service for secure business meeting has been redesigned so that anyone can
           use it for free
-        </p>
+        </div>
       </div>
     </div>
   );

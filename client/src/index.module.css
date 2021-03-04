@@ -17,14 +17,14 @@ code {
   box-sizing: border-box;
 }
 
-@media (max-width: mobileSize) {
-  html {
-    font-size: 35%;
-  }
-}
-
 @media (max-width: mediaQuery) {
   html {
     font-size: 40%;
+  }
+}
+
+@media (max-width: mobileSize) {
+  html {
+    font-size: 30%;
   }
 }

@@ -17,7 +17,6 @@ const SectionHome = () => {
         </h3>
         <div className={styles.container}>
           <Button name="New meeting" />
-          <input className={styles.input} type="text" placeholder="Enter code or link" />
         </div>
       </div>
       <div className={styles.img}></div>

@@ -4,11 +4,11 @@ import datas from '../../data/infos.json';
 import SectionInfoItem from '../section__info__item/sectionInfoItem.jsx';
 const SectionInfo = () => {
   return (
-    <ul className={styles.infos}>
+    <div className={styles.infos}>
       {datas.infos.map((info) => {
         return <SectionInfoItem data={info} key={info.id} />;
       })}
-    </ul>
+    </div>
   );
 };
 
