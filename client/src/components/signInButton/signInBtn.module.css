@@ -1,0 +1,16 @@
+@value makerWhite,makerGreen, makerlightblue, makerLightseaGreen, makerGrey from '../../common/colors.css';
+
+.signBtn {
+  padding: 1rem 4rem;
+  border-radius: 20px;
+  background-color: makerLightseaGreen;
+  color: makerWhite;
+  cursor: pointer;
+  font-size: 1.8rem;
+  font-weight: 700;
+  border: none;
+}
+
+.signBtn:hover {
+  background-color: rgba(98, 196, 203, 0.9);
+}
