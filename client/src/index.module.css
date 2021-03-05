@@ -1,0 +1,36 @@
+@import './reset.css';
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;900&display=swap');
+@value mediaQuery, mobileSize, halfSize from './common/size.css';
+html {
+  font-size: 62.5%;
+}
+body {
+  margin: 0;
+  font-family: 'Nunito', sans-serif;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+@media (max-width: halfSize) {
+  html {
+    font-size: 50%;
+  }
+}
+
+@media (max-width: mediaQuery) {
+  html {
+    font-size: 40%;
+  }
+}
+
+@media (max-width: mobileSize) {
+  html {
+    font-size: 35%;
+  }
+}

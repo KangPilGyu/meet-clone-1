@@ -1,0 +1,73 @@
+@value makerGreen, makerGrey, makerlightblue from '../../common/colors.css';
+@value title, subTitle, mediaQuery from '../../common/size.css';
+
+.background {
+  height: 760px;
+  display: flex;
+}
+.column {
+  background-color: makerGreen;
+  height: 100%;
+  flex: 1 1 5%;
+}
+.img {
+  background-image: url('../../images/sectionHome_img.png');
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  flex: 1 1 47.5%;
+}
+.welcome {
+  flex: 1 1 47.5%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 7rem;
+  text-align: center;
+}
+
+.logo {
+  background-image: url('../../images/logo.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+  width: 5rem;
+  height: 5rem;
+}
+
+.homeTitle {
+  font-size: title;
+  margin-bottom: 2rem;
+}
+
+.homeSubTitle {
+  font-size: subTitle;
+  margin-bottom: 4rem;
+  color: makerGrey;
+  opacity: 0.8;
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+@media screen and (max-width: mediaQuery) {
+  .background {
+    flex-direction: column;
+  }
+  .img {
+    flex: 1 1 50%;
+  }
+  .welcome {
+    flex: 1 1 50%;
+  }
+  .column {
+    display: none;
+  }
+}
