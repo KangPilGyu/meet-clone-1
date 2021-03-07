@@ -1,4 +1,4 @@
-@value makerGreen, makerGrey, makerlightblue from '../../common/colors.css';
+@value makerGreen, makerGrey, makerWhite, makerlightblue from '../../common/colors.css';
 @value title, subTitle, mediaQuery from '../../common/size.css';
 
 .background {
@@ -27,6 +27,7 @@
   align-items: center;
   padding: 7rem;
   text-align: center;
+  background-color: makerWhite;
 }
 
 .logo {

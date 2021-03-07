@@ -1,43 +1,6 @@
 @value makerWhite,makerGreen, makerGrey, makerlightblue, makerLightseaGreen, makerGrey from '../../common/colors.css';
 @value mediumTitle, subTitle, contents from '../../common/size.css';
 
-.modalContainer {
-  visibility: visible;
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 110rem;
-  height: 60rem;
-  display: flex;
-  border-radius: 20px;
-  z-index: 1;
-}
-
-.photo {
-  flex: 1 1 50%;
-  background-image: url('../../images/signInPhoto.png');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
-  border-top-left-radius: 20px;
-  border-bottom-left-radius: 20px;
-  transition: transform 1s;
-  transform: translate(0%);
-}
-
-.photoSlideRight {
-  flex: 1 1 50%;
-  background-image: url('../../images/signInPhoto.png');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
-  border-top-right-radius: 20px;
-  border-bottom-right-radius: 20px;
-  transition: transform 1s;
-  transform: translate(100%);
-}
-
 .signFormContainer {
   flex: 1 1 50%;
   background-color: makerWhite;

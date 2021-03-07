@@ -1,6 +1,7 @@
 import React from 'react';
 import Button from '../button/button';
 import styles from './sectionTakeTour.module.css';
+
 const SectionTakeTour = () => {
   return (
     <div className={styles.container}>
@@ -14,7 +15,7 @@ const SectionTakeTour = () => {
             <br /> anyone
           </h1>
           <div className={styles.button}>
-            <Button name="Take tour" />
+            <Button name="Take tour" location="takeTour" />
           </div>
         </div>
       </div>
