@@ -145,14 +145,24 @@
   visibility: hidden;
 }
 
-.closeBtn {
+.closeBtnRight {
   border: none;
   outline: none;
   background: transparent;
   cursor: pointer;
-  margin: 0 5rem 5rem auto;
+  margin: 1rem 1.4rem auto auto;
   transition: transform 100ms linear;
 }
+
+.closeBtnLeft {
+  border: none;
+  outline: none;
+  background: transparent;
+  cursor: pointer;
+  margin: 1rem auto auto 1.4rem;
+  transition: transform 100ms linear;
+}
+
 .closeBtn:hover {
   transform: scale(1.2);
 }

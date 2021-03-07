@@ -15,14 +15,16 @@ const SignUpForm = ({ switchOn, setSwitchOn }) => {
   return (
     <>
       <form className={styles.signForm}>
-        <h1 className={styles.signTitle}>Create Account</h1>
+        <h1 className={styles.signTitle}>Join us</h1>
         <span className={styles.signInSubTitle}>email</span>
         <input className={styles.signInInput} type="text" placeholder="Email" />
         <span className={styles.signInSubTitle}>password</span>
         <input className={styles.signInInput} type="password" placeholder="Password" />
         <SignInBtn name="Join" />
       </form>
-      <p>log in with </p>
+      <h2 className={styles.login}>
+        <span className={styles.sideLine}>Log in with</span>
+      </h2>
       <div className={styles.socialLogin}>
         <button className={styles.fontBtn}>
           <FontAwesomeIcon className={styles.icon} icon={['fab', 'google']} />
@@ -38,9 +40,9 @@ const SignUpForm = ({ switchOn, setSwitchOn }) => {
         </button>
       </div>
       <div className={styles.createAccountContainer}>
-        <p className={styles.createAccount}>Already have your id?</p>
+        <p className={styles.createAccount}>Are you our member?</p>
         <button ref={createRef} className={styles.createAccountBtn} onClick={onClick}>
-          Go to signin
+          Go to sign in
         </button>
       </div>
     </>

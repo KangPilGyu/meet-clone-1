@@ -89,6 +89,7 @@
   font-size: 1.3rem;
   margin-top: 5rem;
   color: makerGrey;
+  margin-bottom: 5rem;
 }
 
 .createAccountBtn {
@@ -108,14 +109,18 @@
   visibility: hidden;
 }
 
-.closeBtn {
-  border: none;
-  outline: none;
-  background: transparent;
-  cursor: pointer;
-  margin: 0 5rem 5rem auto;
-  transition: transform 100ms linear;
+.login {
+  margin-top: 3rem;
+  font-size: contents;
+  border-bottom: 1px solid #000;
+  line-height: 0.1em;
+  width: 60%;
+  text-align: center;
+  color: makerGrey;
+  opacity: 0.7;
 }
-.closeBtn:hover {
-  transform: scale(1.2);
+
+.sideLine {
+  background-color: #fff;
+  padding: 0 10px;
 }
