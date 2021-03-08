@@ -1,0 +1,33 @@
+@value makerGreen, makerGrey, makerlightGrey, makerlightblue, makerBlack, makerWhite from '../../common/colors.css';
+@value title, subTitle, mediaQuery, mobileSize from '../../common/size.css';
+.question {
+  font-size: 2.3rem;
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+}
+
+.avatar {
+  width: 27rem;
+  height: 27rem;
+  border-radius: 50%;
+  margin-bottom: 4rem;
+  box-shadow: 9px 10px 18px -6px rgba(0, 0, 0, 0.5);
+}
+.welcome {
+  width: 80%;
+  font-size: 2.3rem;
+  font-weight: 500;
+  text-align: center;
+  margin-bottom: 1.3rem;
+  line-height: 1.4;
+}
+
+.list {
+  font-size: 2.3rem;
+}
+
+@media screen and (max-width: mediaQuery) {
+  .question {
+    font-size: 2.5rem;
+  }
+}

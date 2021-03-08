@@ -1,8 +1,7 @@
 import React, { useContext } from 'react';
-import Button from '../button/button';
 import styles from './header__Nav.module.css';
-import SignIn from '../signInModal/signin.jsx';
 import { stateContext } from '../../App.jsx';
+import LinkBtn from '../linkBtn/linkBtn.jsx';
 
 const HeaderNav = () => {
   const { onClickLoginOpen, loginModal } = useContext(stateContext);
@@ -10,8 +9,7 @@ const HeaderNav = () => {
   return (
     <>
       <nav className={styles.navbar}>
-        {/* {loginModal ? <SignIn /> : null} */}
-        <Button name="SignIn" onClick={onClickLoginOpen} location="signIn" />
+        <LinkBtn name="SignIn" onClick={onClickLoginOpen} location="signIn" />
       </nav>
     </>
   );

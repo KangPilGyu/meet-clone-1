@@ -1,45 +1,52 @@
-import React from 'react';
-import Button from '../button/button';
+import React, { useRef, useState } from 'react';
 import styles from './sectionDeveloperInfo.module.css';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faEnvelope } from '@fortawesome/free-solid-svg-icons';
+import profile from '../../data/profile.json';
+import SectionDevFront from '../section__dev__front/sectionDevFront';
+import SectionDevBack from '../section__dev__back/sectionDevBack';
+import ContactUs from '../contactForm/contactUs.jsx';
+import Button from '../button/button';
 
 const SectionDeveloperInfo = () => {
+  const [cardFlip, setCardFlip] = useState(false);
+  const frontRef = useRef();
+  const backRef = useRef();
+
+  const onFlip = () => {
+    setCardFlip(!cardFlip);
+  };
   return (
     <div className={styles.background}>
       <div className={styles.developerInfo}>
-        <div className={styles.select}>
-          <span> | Front-End | Back-End |</span>
+        <div className={styles.cardController}>
+          <Button name="Profile Change" onClick={onFlip} />
         </div>
-        <h1 className={styles.question}>If you have some Question or Comments?</h1>
-
-        <div className={styles.avatar}></div>
-        <p className={styles.welcome}>
-          Hello!
-          <br /> I am a Front-End Developer. <br /> Contact me if you have any questions or any
-          comments.
-        </p>
-        <p className={styles.list}>
-          <FontAwesomeIcon icon={faEnvelope} /> : GriGni@gmail.com
-        </p>
+        <div className={styles.card}>
+          {cardFlip ? (
+            <>
+              <div className={styles.card__innerFlipped}>
+                <div ref={frontRef} className={styles.card__innerBack}>
+                  <SectionDevBack profInfo={profile.infos[1]} />
+                </div>
+                <div ref={backRef} className={styles.card__innerFront}>
+                  <SectionDevFront profInfo={profile.infos[0]} />
+                </div>
+              </div>
+            </>
+          ) : (
+            <>
+              <div className={styles.card__inner}>
+                <div ref={frontRef} className={styles.card__innerBack}>
+                  <SectionDevBack profInfo={profile.infos[1]} />
+                </div>
+                <div ref={backRef} className={styles.card__innerFront}>
+                  <SectionDevFront profInfo={profile.infos[0]} />
+                </div>
+              </div>
+            </>
+          )}
+        </div>
       </div>
-      <form className={styles.email}>
-        <input className={styles.commonStyle} type="text" placeholder="Enter your Name" />
-        <input
-          className={styles.commonStyle}
-          type="text"
-          placeholder="Enter a vaild email address"
-        />
-        <textarea
-          className={styles.commonStyle}
-          name=""
-          id=""
-          cols="30"
-          rows="10"
-          placeholder="Enter your Message"
-        ></textarea>
-        <Button name="submit" />
-      </form>
+      <ContactUs />
     </div>
   );
 };

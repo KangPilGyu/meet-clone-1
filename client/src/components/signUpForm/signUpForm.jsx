@@ -33,10 +33,18 @@ const SignUpForm = ({ switchOn, setSwitchOn }) => {
           <FontAwesomeIcon className={styles.icon} icon={['fab', 'github']} />
         </button>
         <button className={styles.fontBtn}>
-          <img src="/images/naverLogo.png" className={`${styles.icon} ${styles.iconSize}`} />
+          <img
+            src="/images/naverLogo.png"
+            alt="logo"
+            className={`${styles.icon} ${styles.iconSize}`}
+          />
         </button>
         <button className={styles.fontBtn}>
-          <img src="/images/kakaoLogo.png" className={`${styles.icon} ${styles.iconSize}`} />
+          <img
+            src="/images/kakaoLogo.png"
+            alt="logo"
+            className={`${styles.icon} ${styles.iconSize}`}
+          />
         </button>
       </div>
       <div className={styles.createAccountContainer}>

@@ -112,7 +112,7 @@
 .login {
   margin-top: 3rem;
   font-size: contents;
-  border-bottom: 1px solid #000;
+  border-bottom: 1px solid makerGrey;
   line-height: 0.1em;
   width: 60%;
   text-align: center;

@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import styles from './App.module.css';
 import Footer from './components/footer/footer';
 import Header from './components/header/header.jsx';

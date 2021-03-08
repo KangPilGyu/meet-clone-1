@@ -1,0 +1,16 @@
+{
+  "infos": [
+    {
+      "id": "0",
+      "position": "Front-End Developer",
+      "email": "amistadlee10@gmail.com",
+      "img": "/images/avatar1.png"
+    },
+    {
+      "id": "1",
+      "position": "Back-End Developer",
+      "email": "eiffeltop01@gmail.com",
+      "img": "/images/avatar2.png"
+    }
+  ]
+}

@@ -36,6 +36,9 @@
 /client/yarn-debug.log*
 /client/yarn-error.log*
 
+#Client API Keys
+/client/.env
+
 # dependencies
 /node_modules
 /.pnp

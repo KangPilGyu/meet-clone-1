@@ -1,5 +1,5 @@
 import React from 'react';
-import Button from '../button/button';
+import LinkBtn from '../linkBtn/linkBtn';
 import styles from './sectionTakeTour.module.css';
 
 const SectionTakeTour = () => {
@@ -15,7 +15,7 @@ const SectionTakeTour = () => {
             <br /> anyone
           </h1>
           <div className={styles.button}>
-            <Button name="Take tour" location="takeTour" />
+            <LinkBtn name="Take tour" location="takeTour" />
           </div>
         </div>
       </div>

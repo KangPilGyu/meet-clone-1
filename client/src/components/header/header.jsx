@@ -4,7 +4,7 @@ import styles from './header.module.css';
 
 const Header = () => {
   return (
-    <header>
+    <header className={styles.container}>
       <span className={styles.logo}>EveryWhere</span>
       <Nav />
     </header>

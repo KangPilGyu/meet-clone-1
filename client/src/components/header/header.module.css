@@ -1,8 +1,8 @@
 @value makerWhite from '../../common/colors.css';
 @value headerFont from '../../common/size.css';
 
-header {
-  height: 80px;
+.container {
+  height: 9rem;
   width: 100%;
   background-color: makerWhite;
   display: flex;
@@ -11,6 +11,8 @@ header {
   font-size: headerFont;
   padding: 3rem;
   box-shadow: 9px 10px 18px -6px rgba(0, 0, 0, 0.5);
+  position: fixed;
+  z-index: 1;
 }
 
 .logo {
