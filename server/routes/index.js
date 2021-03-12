@@ -4,6 +4,9 @@ const passport = require('passport');
 
 const authController = require('../controllers/api/v1/authController');
 // ---- auth ----
+
+router.get('/auth/local', authController.localAuth);
+
 router.get('/auth/google', authController.googleAuth);
 router.get('/auth/google/callback', authController.goolgeCallBack);
 

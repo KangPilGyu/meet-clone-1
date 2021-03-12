@@ -5,6 +5,7 @@ const JwtStrategy = passportJwt.Strategy;
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
 const KakaoStrategy = require('passport-kakao').Strategy;
 const NaverStrategy = require('passport-naver').Strategy;
+const LocalStrategy = require('passport-local').Strategy;
 
 const extractJwt = passportJwt.ExtractJwt;
 const dotenv = require('dotenv').config().parsed;
@@ -12,6 +13,25 @@ const dotenv = require('dotenv').config().parsed;
 let user = require('../models').User;
 
 module.exports = () => {
+  // Local Strategy
+  passport.use(new LocalStrategy({
+    usernameField: 'email',
+    passwordField: 'password'
+  },
+  function (email, password, done) {
+    // 이 부분에선 저장되어 있는 User를 비교하면 된다. 
+    return user.findOne({where: {email: email, password: password}})
+        .then(user => {
+            if (!user) {
+                return done(null, false, {message: 'Incorrect email or password.'});
+            }
+            return done(null, user, {message: 'Logged In Successfully'});
+        })
+        .catch(err => done(err));
+    }
+  ));
+
+
   // JWT Strategy
   // not used
   passport.use(new JwtStrategy({

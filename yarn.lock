@@ -2,7 +2,14 @@
 # yarn lockfile v1
 
 
-"emailjs-com@^2.6.4":
-  "integrity" "sha512-4G8rxq+1mbL4rGntMa9tqNJ4N9BhuCl8lFJASDHxZVXeC82ivwL6qw+Zu48cAWHpNK2/F3vScaAZk8zoTAfiAA=="
-  "resolved" "https://registry.npmjs.org/emailjs-com/-/emailjs-com-2.6.4.tgz"
-  "version" "2.6.4"
+"passport-local@^1.0.0":
+  "integrity" "sha1-H+YyaMkudWBmJkN+O5BmYsFbpu4="
+  "resolved" "https://registry.npmjs.org/passport-local/-/passport-local-1.0.0.tgz"
+  "version" "1.0.0"
+  dependencies:
+    "passport-strategy" "1.x.x"
+
+"passport-strategy@1.x.x":
+  "integrity" "sha1-tVOaqPwiWj0a0XlHbd8ja0QPUuQ="
+  "resolved" "https://registry.npmjs.org/passport-strategy/-/passport-strategy-1.0.0.tgz"
+  "version" "1.0.0"
