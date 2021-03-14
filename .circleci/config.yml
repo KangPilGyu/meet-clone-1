@@ -39,8 +39,10 @@ workflows:
   #         create-repo: true
   deploy_application:
     jobs:
-      branch: master
       - aws-code-deploy/deploy:
+          filters:
+            branches:
+              only: master
           application-name: meet-clone
           bundle-bucket: meet-clone-deploy
           bundle-key: meet-clone-deploy-zip
