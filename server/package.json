@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "babel-node ./bin/www",
-    "dev": "nodemon --exec babel-node --presets @babel/preset-env ./bin/www"
+    "dev": "nodemon --exec babel-node --presets @babel/preset-env ./bin/www",
+    "production": "pm2 start --interpreter ./node_modules/.bin/babel-node ./bin/www" 
   },
   "dependencies": {
     "axios": "^0.21.0",
@@ -21,7 +22,9 @@
     "passport-google-oauth20": "^2.0.0",
     "passport-jwt": "^4.0.0",
     "passport-kakao": "^1.0.1",
+    "passport-local": "^1.0.0",
     "passport-naver": "^1.0.6",
+    "pm2": "^4.5.5",
     "pug": "2.0.0-beta11",
     "sequelize": "^6.3.5"
   },
