@@ -13,7 +13,7 @@ const dotenv = require('dotenv').config().parsed;
  */
 
 //var port = normalizePort(process.env.PORT || '3100');
-var portStr = dotenv.APP_ENV === 'production' ? '80' : '3100';
+var portStr = dotenv.APP_ENV === 'production' ? '8080' : '3100';
 var port = normalizePort(portStr);
 app.set('port', port);
 
