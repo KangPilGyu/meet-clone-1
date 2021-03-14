@@ -1,7 +1,49 @@
 version: 2.1
+
 orbs:
-  node: circleci/node@3.0.0
+  # aws-ecr: circleci/aws-ecr@6.15.3
+  aws-code-deploy: circleci/aws-code-deploy@2.0.0
+jobs:
+  build:
+    docker:
+     - image: circleci/node:lts
+     - image: circleci/mysql:5.7
+       environment:
+          MYSQL_USER=meet-clone-1
+          MYSQL_PASSWORD=meet-clone-1
+          MYSQL_ALLOW_EMPTY_PASSWORD=false
+          MYSQL_DATABASE=meet-clone-1
+    working_directory: ~/project/server     
+    steps:
+      - checkout:
+            path: ~/project
+      - run: pwd
+      - run: npm --version
+      - run: npm install          
+
 workflows:
-  node-tests:
+  build_and_test:
     jobs:
-      - node/test
+      - build
+  # ecr 이미지 사용 할 시
+  # build-and-deploy:
+  #   jobs:
+  #     - aws-ecr/build-and-push-image:
+  #         account-url: AWS_ECR_URL
+  #         aws-access-key-id: AWS_IAM_ID
+  #         aws-secret-access-key: AWS_IAM_SECRET
+  #         region: AWS_DEFAULT_REGION
+  #         repo: meet-clone
+  #         dockerfile: DockerFile
+  #         path: ~/project
+  #         create-repo: true
+  deploy_application:
+    jobs:
+      branch: master
+      - aws-code-deploy/deploy:
+          application-name: meet-clone
+          bundle-bucket: meet-clone-deploy
+          bundle-key: meet-clone-deploy-zip
+          deployment-group: meet-clone-code-deploy-group
+          service-role-arn: meet-clone-codedeploy
+
