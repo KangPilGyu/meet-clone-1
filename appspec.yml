@@ -5,5 +5,8 @@ files:
     destination: /home/ubuntu/app/
 hooks:
   BeforeInstall:
-    - location: scripts/beforeInstall.sh 
-      runas: root   
+    - location: scripts/before_deloy.sh
+      runas: root
+  AfterInstall:
+    - location: scripts/after_deploy.sh
+      runas: root
