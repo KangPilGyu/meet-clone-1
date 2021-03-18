@@ -31,7 +31,6 @@ module.exports = () => {
     }
   ));
 
-
   // JWT Strategy
   // not used
   passport.use(new JwtStrategy({
@@ -61,7 +60,7 @@ module.exports = () => {
       }).then(user => {
         return done(null, user);
       });
-      
+    
   }));
 
   // KaKao Strategy

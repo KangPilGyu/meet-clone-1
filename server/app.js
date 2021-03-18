@@ -5,10 +5,30 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const passort = require('passport');
 const passortConfing = require('./config/passport');
+const dotenv = require('dotenv').config().parsed;
 
 var indexRouter = require('./routes/index');
 
 var app = express();
+
+// redirect
+app.use(function(req, res, next) {
+  if((!req.secure) && (req.get('X-Forwarded-Proto') !== 'https')) {
+      res.redirect('https://' + req.get('Host') + req.url);
+  }
+  else
+      next();
+});
+
+// if (dotenv.APP_ENV === 'production') {
+//   if (req.get('x-forwarded-proto') != "https") {
+//     res.set('x-forwarded-proto', 'https');
+//     res.redirect('https://' + req.get('host') + req.url);
+//   } else {
+//     next();     
+//   }
+// }
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
