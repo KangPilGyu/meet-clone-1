@@ -1,4 +1,4 @@
 #!/bin/bash
 
-sudo chmod 755 -R /home/ubuntu/app/server/
-sudo mv /home/ubuntu/.env /home/ubuntu/app/server/
+chmod 755 -R /home/ubuntu/app/server/
+mv /home/ubuntu/.env /home/ubuntu/app/server/
