@@ -27,15 +27,6 @@ jobs:
       - slack/notify:
           event: pass
           template: basic_on_hold_1
-  deploy_notify:
-    steps:
-      - slack/notify:
-          event: fail
-          mentions: '@EngineeringTeam'
-          template: basic_fail_1
-      - slack/notify:
-          event: pass
-          template: success_tagged_deploy_1
 
 workflows:
   build_and_test:
@@ -64,5 +55,4 @@ workflows:
           bundle-key: meet-clone-deploy-zip
           deployment-group: meet-clone-code-deploy-group
           service-role-arn: meet-clone-codedeploy
-      - deploy_notify
 
