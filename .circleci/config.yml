@@ -58,4 +58,4 @@ workflows:
       - slack/on-hold:
           requires:
             - aws-code-deploy/deploy
-          context: slack-secrets
+          template: basic_on_hold_1
