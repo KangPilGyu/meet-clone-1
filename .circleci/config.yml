@@ -1,7 +1,8 @@
 version: 2.1
 
 orbs:
-  # aws-ecr: circleci/aws-ecr@6.15.3
+  # aws-ecr: circleci/aws-ecr@6.15.3\
+  slack: circleci/slack@4.3.1
   aws-code-deploy: circleci/aws-code-deploy@2.0.0
 jobs:
   build:
@@ -19,8 +20,14 @@ jobs:
             path: ~/project
       - run: pwd
       - run: npm --version
-      - run: npm install          
-
+      - run: npm install   
+      - slack/notify:
+          event: fail
+          template: basic_fail_1
+      - slack/notify:
+          event: pass
+          template: basic_on_hold_1
+      
 workflows:
   build_and_test:
     jobs:
@@ -48,4 +55,7 @@ workflows:
           bundle-key: meet-clone-deploy-zip
           deployment-group: meet-clone-code-deploy-group
           service-role-arn: meet-clone-codedeploy
-
+      - slack/on-hold:
+          requires:
+            - aws-code-deploy/deploy
+          context: slack-secrets
