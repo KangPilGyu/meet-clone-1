@@ -5,5 +5,5 @@ module.exports = {
   password: dotenv.DB_PASS,
   database: dotenv.DB_NAME,
   host: dotenv.DB_HOST,
-  dialect: "mysql"
-}
+  dialect: 'mysql',
+};

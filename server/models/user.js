@@ -1,7 +1,8 @@
 'use strict';
-const {
-  Model
-} = require('sequelize');
+const { Model } = require('sequelize');
+const crypto = require('crypto');
+const salt = require('../config/salt');
+
 module.exports = (sequelize, DataTypes) => {
   class User extends Model {
     /**
@@ -12,17 +13,42 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
     }
-  };
-  User.init({
-    name: DataTypes.STRING,
-    email: DataTypes.STRING,
-    password: DataTypes.STRING,
-    nickName: DataTypes.STRING,
-    googleId: DataTypes.STRING,
-    kakaoId: DataTypes.STRING
-  }, {
-    sequelize,
-    modelName: 'User',
-  });
+  }
+  User.init(
+    {
+      name: DataTypes.STRING,
+      email: { type: DataTypes.STRING, required: true, unique: true },
+      password: {
+        type: DataTypes.STRING,
+        // allowNull: true,
+        // validate: {
+        //   isEmail: true,
+        //   notEmpty: true,
+        // },
+      },
+      googleId: DataTypes.STRING,
+      kakaoId: DataTypes.STRING,
+      githubId: DataTypes.STRING,
+      naverId: DataTypes.STRING,
+    },
+    {
+      hooks: {
+        beforeCreate: (data, option) => {
+          var shasum = crypto.createHmac('sha512', salt.encryption);
+          shasum.update(data.password);
+          data.password = shasum.digest('hex');
+        },
+        beforeFind: (data, option) => {
+          if (data.where.password) {
+            var shasum = crypto.createHmac('sha512', salt.encryption);
+            shasum.update(data.where.password);
+            data.where.password = shasum.digest('hex');
+          }
+        },
+      },
+      sequelize,
+      modelName: 'user',
+    },
+  );
   return User;
 };

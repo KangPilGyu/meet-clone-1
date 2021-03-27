@@ -6,37 +6,40 @@ module.exports = {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
       },
       name: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       email: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       password: {
-        type: Sequelize.STRING
-      },
-      nickName: {
-        type: Sequelize.STRING
-      },
-      googleId: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
       },
       kakaoId: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+      },
+      naverId: {
+        type: Sequelize.STRING,
+      },
+      githubId: {
+        type: Sequelize.STRING,
+      },
+      googleId: {
+        type: Sequelize.STRING,
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
-      }
+        type: Sequelize.DATE,
+      },
     });
   },
   down: async (queryInterface, Sequelize) => {
     await queryInterface.dropTable('Users');
-  }
+  },
 };

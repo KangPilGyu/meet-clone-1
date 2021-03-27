@@ -4,6 +4,7 @@
 .background {
   height: 760px;
   display: flex;
+  padding-top: 8rem;
 }
 .column {
   background-color: makerGreen;
@@ -19,6 +20,13 @@
   background-position: center;
   flex: 1 1 47.5%;
 }
+.welcomeContainer {
+  background-color: makerWhite;
+  flex: 1 1 47.5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 .welcome {
   flex: 1 1 47.5%;
   display: flex;
@@ -27,16 +35,13 @@
   align-items: center;
   padding: 7rem;
   text-align: center;
-  background-color: makerWhite;
+  transform: translateY(-700px);
+  transition: transform 0.5s ease-in;
 }
 
 .logo {
-  background-image: url('../../images/logo.png');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
-  width: 5rem;
-  height: 5rem;
+  width: 7rem;
+  height: 7rem;
 }
 
 .homeTitle {

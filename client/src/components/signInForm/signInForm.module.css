@@ -49,7 +49,7 @@
 
 .signInInput {
   outline: none;
-  border: makerGrey 1px solid;
+  border: makerGrey 1.5px solid;
   border-radius: 8px;
   margin-bottom: 2rem;
   font-size: 2rem;
@@ -107,4 +107,26 @@
 
 .visibility {
   visibility: hidden;
+}
+
+.login {
+  margin-top: 3rem;
+  font-size: contents;
+  border-bottom: 1px solid makerGrey;
+  line-height: 0.1em;
+  width: 60%;
+  text-align: center;
+  color: makerGrey;
+  opacity: 0.7;
+}
+
+.sideLine {
+  background-color: #fff;
+  padding: 0 10px;
+}
+
+@media screen and (max-width: mobileSize) {
+  .signFormContainer {
+    flex: 1 1 100%;
+  }
 }

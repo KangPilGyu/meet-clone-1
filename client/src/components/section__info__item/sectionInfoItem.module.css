@@ -43,6 +43,14 @@
   border-bottom: 2px solid lightgray;
   font-weight: 700;
   color: makerBlack;
+  transform: translateY(-50px);
+  transition: transform 0.5s ease-in;
+  opacity: 0;
+}
+
+.titleDown {
+  transform: translateY(0px);
+  opacity: 1;
 }
 
 .infoContents {

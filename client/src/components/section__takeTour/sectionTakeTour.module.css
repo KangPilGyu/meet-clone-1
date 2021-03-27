@@ -64,7 +64,14 @@
   border-bottom-left-radius: 1rem;
   border-bottom-right-radius: 1rem;
   box-shadow: 10px 11px 15px -5px rgba(0, 0, 0, 0.7);
+  transform: translateX(1100px);
+  transition: transform 600ms ease-in;
 }
+
+.descriptionSlide {
+  transform: translateX(0px);
+}
+
 .description::after {
   border-top: 3vw solid rgba(246, 241, 235, 0.8);
   border-left: 2vw solid transparent;
@@ -73,7 +80,7 @@
   content: '';
   position: absolute;
   top: 0;
-  left: 11.7vw;
+  left: -2vw;
   width: 0.3rem;
 }
 

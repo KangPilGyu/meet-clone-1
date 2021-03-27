@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import LinkBtn from '../linkBtn/linkBtn';
 import styles from './sectionTakeTour.module.css';
+import { stateContext } from '../../App.jsx';
 
 const SectionTakeTour = () => {
+  const { position } = useContext(stateContext);
   return (
     <div className={styles.container}>
       <div className={styles.background}>
@@ -20,7 +22,9 @@ const SectionTakeTour = () => {
         </div>
       </div>
       <div className={styles.subDescContatiner}>
-        <div className={styles.description}>
+        <div
+          className={`${position > 1445 ? styles.descriptionSlide : null} ${styles.description}`}
+        >
           The Google Meet service for secure business meeting has been redesigned so that anyone can
           use it for free
         </div>

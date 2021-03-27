@@ -1,8 +1,7 @@
 @value makerWhite,makerGreen, makerGrey, makerlightblue, makerLightseaGreen, makerGrey from '../../common/colors.css';
-@value mediumTitle, subTitle, contents from '../../common/size.css';
+@value mediumTitle, subTitle, contents, mobileSize, mediaQuery from '../../common/size.css';
 
 .modalContainer {
-  visibility: visible;
   position: fixed;
   top: 50%;
   left: 50%;
@@ -24,16 +23,14 @@
   border-bottom-left-radius: 20px;
   transition: transform 1s;
   transform: translate(0%);
+  visibility: visible;
 }
 
-.photoSlideRight {
-  flex: 1 1 50%;
-  background-image: url('../../images/signInPhoto.png');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
+.slideRight {
   border-top-right-radius: 20px;
   border-bottom-right-radius: 20px;
+  border-top-left-radius: 0px;
+  border-bottom-left-radius: 0px;
   transition: transform 1s;
   transform: translate(100%);
 }
@@ -50,19 +47,26 @@
   transition: transform 1s;
   transform: translate(0%);
 }
-.signFormSlideLeft {
-  flex: 1 1 50%;
-  background-color: makerWhite;
+
+.slideLeft {
   border-top-left-radius: 20px;
   border-bottom-left-radius: 20px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+  border-top-right-radius: 0px;
+  border-bottom-right-radius: 0px;
   transition: transform 1s;
   transform: translate(-100%);
 }
 
+.welcome {
+  background-image: url('../../images/welcome.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+  border-bottom-left-radius: 20px;
+  border-top-left-radius: 20px;
+}
 .signForm {
   display: flex;
   justify-content: center;
@@ -141,10 +145,6 @@
   color: makerlightblue;
 }
 
-.visibility {
-  visibility: hidden;
-}
-
 .closeBtnRight {
   border: none;
   outline: none;
@@ -165,4 +165,25 @@
 
 .closeBtn:hover {
   transform: scale(1.2);
+}
+
+@media screen and (max-width: mediaQuery) {
+  .modalContainer {
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+  }
+  .photo {
+    /* visibility: hidden; */
+  }
+}
+
+@media screen and (max-width: mobileSize) {
+  .modalContainer {
+    /* flex-direction: column; */
+    width: 90rem;
+    height: 60rem;
+  }
+  .photo {
+    /* visibility: hidden; */
+  }
 }

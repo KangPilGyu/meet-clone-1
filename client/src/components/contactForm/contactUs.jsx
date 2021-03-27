@@ -4,8 +4,8 @@ import styles from './contactUs.module.css';
 
 export default function ContactUs() {
   function sendEmail(e) {
+    console.log(process.env.REACT_APP_EMAILJS_API_KEY);
     e.preventDefault();
-    console.log();
     emailjs
       .sendForm(
         process.env.REACT_APP_EMAILJS_SERVICE_ID,

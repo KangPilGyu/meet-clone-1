@@ -8,28 +8,38 @@ import { Link } from 'react-router-dom';
 import SignUpForm from '../signUpForm/signUpForm';
 
 const SignIn = () => {
-  const { onClickLoginClose, loginModal } = useContext(stateContext);
+  const { onClickLoginClose, setLoginStatus } = useContext(stateContext);
   const [switchOn, setSwitchOn] = useState(false);
-
+  const [isSubmitted, setIsSubmitted] = useState(false);
   return (
     <div className={styles.modalContainer}>
-      <div className={switchOn ? styles.photoSlideRight : styles.photo}>
-        <div className={styles.signUp}></div>
-      </div>
-      <div className={switchOn ? styles.signFormSlideLeft : styles.signFormContainer}>
-        <Link
-          to="/home"
-          className={switchOn ? styles.closeBtnLeft : styles.closeBtnRight}
-          onClick={onClickLoginClose}
-        >
-          <FontAwesomeIcon className={styles.icon} icon={faTimes} />
-        </Link>
-        {switchOn ? (
-          <SignUpForm switchOn={switchOn} setSwitchOn={setSwitchOn} />
-        ) : (
-          <SignInForm switchOn={switchOn} setSwitchOn={setSwitchOn} />
-        )}
-      </div>
+      <div className={`${switchOn ? styles.slideRight : null} ${styles.photo}`}></div>
+      {!isSubmitted ? (
+        <div className={`${switchOn ? styles.slideLeft : null} ${styles.signFormContainer}`}>
+          <Link
+            to="/home"
+            className={switchOn ? styles.closeBtnLeft : styles.closeBtnRight}
+            onClick={onClickLoginClose}
+          >
+            <FontAwesomeIcon className={styles.icon} icon={faTimes} />
+          </Link>
+          {switchOn ? (
+            <SignUpForm
+              switchOn={switchOn}
+              setSwitchOn={setSwitchOn}
+              isSubmitted={isSubmitted}
+              setIsSubmitted={setIsSubmitted}
+              setLoginStatus={setLoginStatus}
+            />
+          ) : (
+            <SignInForm switchOn={switchOn} setSwitchOn={setSwitchOn} />
+          )}
+        </div>
+      ) : (
+        <div className={`${switchOn ? styles.slideLeft : null} ${styles.signFormContainer}`}>
+          <div className={styles.welcome}></div>
+        </div>
+      )}
     </div>
   );
 };

@@ -1,9 +1,11 @@
 import React from 'react';
 import styles from './signInBtn.module.css';
-const SignInBtn = ({ name }) => {
+const SignInBtn = ({ name, onClick }) => {
   return (
     <>
-      <button className={styles.signBtn}>{name}</button>
+      <button className={styles.signBtn} onClick={onClick}>
+        {name}
+      </button>
     </>
   );
 };

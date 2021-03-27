@@ -9,8 +9,15 @@
   flex-direction: column;
   justify-content: center;
   padding: 5rem;
+  background-image: url('../../images/emailBackground.png');
+  background-position: top;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
-
+.commonStyle::placeholder {
+  color: white;
+  opacity: 0.8;
+}
 .commonStyle {
   outline: none;
   background-color: transparent;
