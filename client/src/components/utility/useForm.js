@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
-const useForm = (validate, setLoginStatus, setIsSubmitted) => {
+const useForm = (validate, setIsSubmittedFromSignUp, loginDispatch) => {
   const [values, setValues] = useState({
     name: '',
     email: '',
@@ -19,14 +19,13 @@ const useForm = (validate, setLoginStatus, setIsSubmitted) => {
       [name]: value,
     });
   };
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setErrors(validate(values));
-    console.log(errors);
     if (Object.keys(errors).length) {
       return;
     }
-    axios
+    await axios
       .post('/api/signUp', {
         name: values.name,
         email: values.email,
@@ -36,18 +35,16 @@ const useForm = (validate, setLoginStatus, setIsSubmitted) => {
         console.log(res);
         const { token } = res.data;
         localStorage.setItem('jwt', token);
-        // axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
-        setIsSubmitted(true);
-        setLoginStatus(true);
+        setIsSubmittedFromSignUp(true);
+        loginDispatch({ type: 'success' });
         setTimeout(() => {
           history.push('/home');
-        }, 3000);
+        }, 1500);
       })
       .catch((err) => {
         console.log(err);
       });
   };
-  // console.log(values);
   return { handleChange, values, handleSubmit, errors };
 };
 

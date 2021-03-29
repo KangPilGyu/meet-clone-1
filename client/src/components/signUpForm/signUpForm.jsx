@@ -1,31 +1,18 @@
-import React, { useState } from 'react';
+import React from 'react';
 import useForm from '../utility/useForm.js';
 import styles from './signUpForm.module.css';
 import SignInBtn from '../signInButton/signInBtn.jsx';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { fab } from '@fortawesome/free-brands-svg-icons';
-import GoogleLogin from 'react-google-login';
-import KakaoLogin from 'react-kakao-login';
 import validate from '../utility/validate';
+import SocialLogin from '../socialLogin/socialLogin.jsx';
 
-library.add(fab);
-
-const SignUpForm = ({ switchOn, setSwitchOn, setLoginStatus, setIsSubmitted }) => {
+const SignUpForm = ({ switchOn, setSwitchOn, setIsSubmittedFromSignUp, loginDispatch }) => {
   const { handleChange, values, handleSubmit, errors } = useForm(
     validate,
-    setLoginStatus,
-    setIsSubmitted,
+    setIsSubmittedFromSignUp,
+    loginDispatch,
   );
   const onClick = () => {
     setSwitchOn(!switchOn);
-  };
-
-  const responseGoogle = (res) => {
-    console.log(res);
-  };
-  const responseKakao = (res) => {
-    console.log(res);
   };
 
   return (
@@ -40,7 +27,7 @@ const SignUpForm = ({ switchOn, setSwitchOn, setLoginStatus, setIsSubmitted }) =
           name="name"
           className={`${errors.name && styles.redSign} ${styles.signInInput}`}
           type="text"
-          placeholder="Name"
+          placeholder="Ex : clayKang"
           value={values.name}
           onChange={handleChange}
         />
@@ -55,7 +42,7 @@ const SignUpForm = ({ switchOn, setSwitchOn, setLoginStatus, setIsSubmitted }) =
           name="email"
           className={`${errors.email && styles.redSign} ${styles.signInInput}`}
           type="text"
-          placeholder="Email"
+          placeholder="Ex : everywheremeet@gmail.com"
         />
         {errors.email && <p>{errors.email}</p>}
         <label className={styles.signInSubTitle} htmlFor="pwd">
@@ -68,7 +55,7 @@ const SignUpForm = ({ switchOn, setSwitchOn, setLoginStatus, setIsSubmitted }) =
           name="password"
           className={`${errors.password && styles.redSign} ${styles.signInInput}`}
           type="password"
-          placeholder="Password"
+          placeholder="Ex : Candoit12!@"
         />
         {errors.password && <p>{errors.password}</p>}
         <label className={styles.signInSubTitle} htmlFor="doubleCheckPwd">
@@ -82,7 +69,7 @@ const SignUpForm = ({ switchOn, setSwitchOn, setLoginStatus, setIsSubmitted }) =
           name="password2"
           className={`${errors.password2 && styles.redSign} ${styles.signInInput}`}
           type="password"
-          placeholder="Confirm password"
+          placeholder="Ex : Candoit12!@"
         />
         {errors.password2 && <p>{errors.password2}</p>}
         <SignInBtn name="Join" onClick={handleSubmit} />
@@ -91,50 +78,7 @@ const SignUpForm = ({ switchOn, setSwitchOn, setLoginStatus, setIsSubmitted }) =
       <h2 className={styles.login}>
         <span className={styles.sideLine}>Sign up with</span>
       </h2>
-      <div className={styles.socialLogin}>
-        <GoogleLogin
-          clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
-          onSuccess={responseGoogle}
-          onFailure={responseGoogle}
-          cookiePolicy={'single_host_origin'}
-          render={(renderProps) => (
-            <button
-              className={styles.fontBtn}
-              onClick={renderProps.onClick}
-              disabled={renderProps.disabled}
-            >
-              <FontAwesomeIcon className={styles.icon} icon={['fab', 'google']} />
-            </button>
-          )}
-        />
-        <button className={styles.fontBtn}>
-          <FontAwesomeIcon className={styles.icon} icon={['fab', 'github']} />
-        </button>
-        <button className={styles.fontBtn}>
-          <img
-            src="/images/naverLogo.png"
-            alt="logo"
-            className={`${styles.icon} ${styles.iconSize}`}
-          />
-        </button>
-        <KakaoLogin
-          token={process.env.REACT_APP_KAKAO_CLIENT_ID}
-          onSuccess={responseKakao}
-          onFail={responseKakao}
-          // onLogout={}
-          render={({ onClick }) => {
-            return (
-              <button className={styles.fontBtn} onClick={onClick}>
-                <img
-                  src="/images/kakaoLogo.png"
-                  alt="logo"
-                  className={`${styles.icon} ${styles.iconSize}`}
-                />
-              </button>
-            );
-          }}
-        />
-      </div>
+      <SocialLogin />
       <div className={styles.createAccountContainer}>
         <p className={styles.createAccount}>Are you our member?</p>
         <button className={styles.createAccountBtn} onClick={onClick}>

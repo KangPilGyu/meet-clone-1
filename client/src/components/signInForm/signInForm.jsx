@@ -1,50 +1,57 @@
-import React, { useContext, useRef, useState } from 'react';
+import React, { useContext, useRef } from 'react';
 import styles from './signInForm.module.css';
 import SignInBtn from '../signInButton/signInBtn.jsx';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { library } from '@fortawesome/fontawesome-svg-core';
-import { fab } from '@fortawesome/free-brands-svg-icons';
 import { useHistory } from 'react-router-dom';
+import { stateContext } from '../../store.js';
+import SocialLogin from '../socialLogin/socialLogin.jsx';
 import axios from 'axios';
-import { stateContext } from '../../App.jsx';
-library.add(fab);
 
-const SignInForm = ({ switchOn, setSwitchOn }) => {
+const SignInForm = ({
+  switchOn,
+  setSwitchOn,
+  setIsSubmittedFromSignIn,
+  setIsSubmittedFromSignUp,
+}) => {
+  const { loginDispatch, loginState } = useContext(stateContext);
+  const { email, password, isLoading, message, isLoggedIn, name } = loginState;
   let createRef = useRef();
-  const { setUserInfo, setLoginStatus } = useContext(stateContext);
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
   let history = useHistory();
   const onClick = () => {
     setSwitchOn(!switchOn);
   };
 
-  const submitLogin = (e) => {
+  const submitLogin = async (e) => {
     e.preventDefault();
-    axios
+    loginDispatch({ type: 'login' });
+    await axios
       .post('/api/signIn', {
         email: email,
         password: password,
       })
       .then((res) => {
+        // server did't give auth to client because it wasn't authenticated.
         if (!res.data.auth) {
-          setLoginStatus(false);
+          loginDispatch({ type: 'authError' });
         } else {
           const { token } = res.data;
-          console.log(token);
           // store the token in the local storage.
           localStorage.setItem('jwt', token);
-          setUserInfo(res);
-          setLoginStatus(true);
-          history.push('/home');
+          loginDispatch({ type: 'success', name: res.data.user.name });
+          setIsSubmittedFromSignUp(true);
+          setIsSubmittedFromSignIn(true);
+          setTimeout(() => {
+            history.push('/home');
+          }, 1500);
         }
       })
       .catch((err) => {
         console.log('pass err');
-        console.log(err);
+        loginDispatch({
+          type: 'error',
+        });
+        console.log(loginState);
       });
   };
-
   return (
     <>
       <form className={styles.signForm}>
@@ -55,7 +62,7 @@ const SignInForm = ({ switchOn, setSwitchOn }) => {
           type="text"
           placeholder="Email"
           onChange={(e) => {
-            setEmail(e.target.value);
+            loginDispatch({ type: 'field', field: 'email', value: e.currentTarget.value });
           }}
         />
         <span className={styles.signInSubTitle}>password</span>
@@ -64,36 +71,16 @@ const SignInForm = ({ switchOn, setSwitchOn }) => {
           type="password"
           placeholder="Password"
           onChange={(e) => {
-            setPassword(e.target.value);
+            loginDispatch({ type: 'field', field: 'password', value: e.currentTarget.value });
           }}
         />
+        {message && <span className={styles.error}>{message}</span>}
         <SignInBtn name="Sign In" onClick={submitLogin} />
       </form>
       <h2 className={styles.login}>
         <span className={styles.sideLine}>Sign In with</span>
       </h2>
-      <div className={styles.socialLogin}>
-        <button className={styles.fontBtn}>
-          <FontAwesomeIcon className={styles.icon} icon={['fab', 'google']} />
-        </button>
-        <button className={styles.fontBtn}>
-          <FontAwesomeIcon className={styles.icon} icon={['fab', 'github']} />
-        </button>
-        <button className={styles.fontBtn}>
-          <img
-            src="/images/naverLogo.png"
-            alt="logo"
-            className={`${styles.icon} ${styles.iconSize}`}
-          />
-        </button>
-        <button className={styles.fontBtn}>
-          <img
-            src="/images/kakaoLogo.png"
-            alt="logo"
-            className={`${styles.icon} ${styles.iconSize}`}
-          />
-        </button>
-      </div>
+      <SocialLogin />
       <div className={styles.createAccountContainer}>
         <p className={styles.createAccount}>Don't have an account?</p>
         <button ref={createRef} className={styles.createAccountBtn} onClick={onClick}>

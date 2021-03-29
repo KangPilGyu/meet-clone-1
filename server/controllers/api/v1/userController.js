@@ -22,7 +22,9 @@ module.exports = {
       if (created) {
         // json으로 넘겨줄 때 중요 정보인 비밀번호는 제외하고 넘기는 로직
         const result = newUser.dataValues;
-        const token = jwt.sign({ id: result.email }, dotenv.JWT_SECRET);
+        const token = jwt.sign({ id: result.email }, dotenv.JWT_SECRET, {
+          expiresIn: 600,
+        });
         result.token = token;
         const { password, ...data } = result;
         res.status(201).json(data);
@@ -37,6 +39,7 @@ module.exports = {
   },
   signInController: async (req, res, next) => {
     console.log('hello signIn');
+    console.log(req.body);
     try {
       let { email, password } = req.body;
       var shasum = crypto.createHmac('sha512', salt.encryption);

@@ -1,16 +1,20 @@
 import React, { useContext } from 'react';
 import styles from './sectionInfoItem.module.css';
-import { stateContext } from '../../App.jsx';
+import { stateContext } from '../../store.js';
 
 const SectionInfoItem = ({ data }) => {
-  const { position } = useContext(stateContext);
+  const { positionState } = useContext(stateContext);
   return (
     <li className={styles.info}>
       {data.position === 'left' ? (
         <>
           <img className={styles.imageStyle} src={data.img} alt="character" />
           <div className={styles.info__explain}>
-            <p className={`${position > 15 ? styles.titleDown : null} ${styles.infoTitle}`}>
+            <p
+              className={`${positionState.position > 15 ? styles.titleDown : null} ${
+                styles.infoTitle
+              }`}
+            >
               {data.title}
             </p>
 
@@ -20,7 +24,11 @@ const SectionInfoItem = ({ data }) => {
       ) : (
         <>
           <div className={styles.info__explain}>
-            <p className={`${position > 41 ? styles.titleDown : null} ${styles.infoTitle}`}>
+            <p
+              className={`${positionState.position > 41 ? styles.titleDown : null} ${
+                styles.infoTitle
+              }`}
+            >
               {data.title}
             </p>
             <p className={styles.infoContents}>{data.contents}</p>

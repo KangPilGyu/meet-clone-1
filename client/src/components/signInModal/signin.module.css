@@ -67,6 +67,14 @@
   border-bottom-left-radius: 20px;
   border-top-left-radius: 20px;
 }
+
+.radiusRightSide {
+  border-bottom-right-radius: 20px;
+  border-top-right-radius: 20px;
+  border-bottom-left-radius: 0px;
+  border-top-left-radius: 0px;
+}
+
 .signForm {
   display: flex;
   justify-content: center;

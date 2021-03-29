@@ -1,14 +1,14 @@
-import React, { useContext, useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef } from 'react';
 import styles from './sectionHome.module.css';
-import { stateContext } from '../../App.jsx';
+import { stateContext } from '../../store.js';
 import LinkBtn from '../linkBtn/linkBtn';
 
 const SectionHome = () => {
-  const { position } = useContext(stateContext);
+  const { positionState, loginState } = useContext(stateContext);
   const welcomeRef = useRef();
   useEffect(() => {
     setTimeout(() => {
-      if (position === 0) {
+      if (positionState.position === 0) {
         welcomeRef.current.style.transform = `translateY(0px)`;
       }
     }, 500);
@@ -28,7 +28,7 @@ const SectionHome = () => {
             your friends
           </h3>
           <div className={styles.container}>
-            <LinkBtn name="New meeting" location="meeting" />
+            <LinkBtn name="New meeting" location={loginState.isLoggedIn ? 'meeting' : 'signIn'} />
           </div>
         </div>
       </div>

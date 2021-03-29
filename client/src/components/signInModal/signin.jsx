@@ -3,23 +3,25 @@ import styles from './signin.module.css';
 import SignInForm from '../signInForm/signInForm.jsx';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes } from '@fortawesome/free-solid-svg-icons';
-import { stateContext } from '../../App.jsx';
+import { stateContext } from '../../store.js';
 import { Link } from 'react-router-dom';
 import SignUpForm from '../signUpForm/signUpForm';
 
+
 const SignIn = () => {
-  const { onClickLoginClose, setLoginStatus } = useContext(stateContext);
+  const { loginModalDispatch, setLoginStatus, loginDispatch } = useContext(stateContext);
   const [switchOn, setSwitchOn] = useState(false);
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmittedFromSignUp, setIsSubmittedFromSignUp] = useState(false);
+  const [isSubmittedFromSignIn, setIsSubmittedFromSignIn] = useState(false);
   return (
     <div className={styles.modalContainer}>
       <div className={`${switchOn ? styles.slideRight : null} ${styles.photo}`}></div>
-      {!isSubmitted ? (
+      {!isSubmittedFromSignUp ? (
         <div className={`${switchOn ? styles.slideLeft : null} ${styles.signFormContainer}`}>
           <Link
             to="/home"
             className={switchOn ? styles.closeBtnLeft : styles.closeBtnRight}
-            onClick={onClickLoginClose}
+            onClick={() => loginModalDispatch({ type: 'close' })}
           >
             <FontAwesomeIcon className={styles.icon} icon={faTimes} />
           </Link>
@@ -27,17 +29,28 @@ const SignIn = () => {
             <SignUpForm
               switchOn={switchOn}
               setSwitchOn={setSwitchOn}
-              isSubmitted={isSubmitted}
-              setIsSubmitted={setIsSubmitted}
+              isSubmittedFromSignUp={isSubmittedFromSignUp}
+              setIsSubmittedFromSignUp={setIsSubmittedFromSignUp}
               setLoginStatus={setLoginStatus}
+              loginDispatch={loginDispatch}
             />
           ) : (
-            <SignInForm switchOn={switchOn} setSwitchOn={setSwitchOn} />
+            <SignInForm
+              switchOn={switchOn}
+              setSwitchOn={setSwitchOn}
+              isSubmittedFromSignIn={isSubmittedFromSignIn}
+              setIsSubmittedFromSignIn={setIsSubmittedFromSignIn}
+              setIsSubmittedFromSignUp={setIsSubmittedFromSignUp}
+            />
           )}
         </div>
       ) : (
         <div className={`${switchOn ? styles.slideLeft : null} ${styles.signFormContainer}`}>
-          <div className={styles.welcome}></div>
+          {!isSubmittedFromSignIn ? (
+            <div className={styles.welcome}></div>
+          ) : (
+            <div className={`${styles.welcome} ${styles.radiusRightSide}`}></div>
+          )}
         </div>
       )}
     </div>
