@@ -12,7 +12,6 @@ const routesAuth = require('./routes/auth.js');
 const indexRouter = require('./routes/index');
 
 var app = express();
-app.io = require('socket.io')();
 
 // healthcheck
 app.get('/helath-check', (req, res) => {
