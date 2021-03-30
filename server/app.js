@@ -11,7 +11,12 @@ const routesUser = require('./routes/users.js');
 const routesAuth = require('./routes/auth.js');
 const indexRouter = require('./routes/index');
 
-const app = express();
+var app = express();
+
+// healthcheck
+app.get('/helath-check', (req, res) => {
+  res.send('Health Success');
+});
 
 // redirect
 if (dotenv.APP_ENV === 'production') {
