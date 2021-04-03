@@ -1,0 +1,16 @@
+@value headerPadding from '../../../../../common/space.css';
+@value makerGreen from '../../../../../common/colors.css';
+
+.navbar {
+  padding: headerPadding;
+}
+
+.nav__button {
+  padding: 1rem 3rem;
+  outline: none;
+  border: 1px solid makerGreen;
+  background: transparent;
+  cursor: pointer;
+  font-size: 2rem;
+  border-radius: 5px;
+}

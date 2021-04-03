@@ -7,7 +7,7 @@ const { user } = require('../../../models');
 const jwt = require('jsonwebtoken');
 
 module.exports = {
-  signUpController: async (req, res, next) => {
+  create: async (req, res, next) => {
     console.log('hello sign up');
     const { name, email, password } = req.body;
     if (Object.keys(req.body).length !== 3) {
@@ -38,38 +38,8 @@ module.exports = {
       1;
     }
   },
-  signInController: async (req, res, next) => {
-    console.log('hello signIn');
-    try {
-      console.log('hi');
-      let { email, password } = req.body;
-      var shasum = crypto.createHmac('sha512', salt.encryption);
-      shasum.update(password);
-      password = shasum.digest('hex');
-      let result = await user.findOne({ where: { [Op.and]: [{ email }, { password }] } });
-      console.log(result);
-      if (result === null) {
-        console.log('sign-in fails');
-        res.status(404).send({ auth: false, message: 'invalid user or invalid credentials' });
-      } else {
-        console.log('sign-in success');
-        const token = jwt.sign({ id: result.dataValues.email }, dotenv.JWT_SECRET, {
-          expiresIn: 600,
-        });
-        console.log(token);
-        const { password, ...data } = result.dataValues;
-        res.status(200).json({ auth: true, token: token, user: data });
-      }
-    } catch (err) {
-      console.log(err);
-      next(err);
-    }
-  },
-  signOutController: async (req, res, next) => {
-    res.send({ message: 'success' });
-  },
-  userInfoController: async (req, res, next) => {
-    console.log('get userInfo');
+
+  get: async (req, res, next) => {
     res.send('you are authenticated');
   },
 

@@ -28,32 +28,15 @@ module.exports = () => {
         var shasum = crypto.createHmac('sha512', salt.encryption);
         shasum.update(password);
         password = shasum.digest('hex');
-        console.log('localstrategy', email, password);
         try {
           let result = await user.findOne({ where: { [Op.and]: [{ email }, { password }] } });
-          console.log(result);
           if (!result) {
             return done(null, false, { message: 'Incorrect email or password.' });
           }
-          return done(null, user, { message: 'Logged In Successfully' });
+          return done(null, result, { message: 'Logged In Successfully' });
         } catch (err) {
-          console.log(err);
           return done(err);
         }
-        // user
-        //   .findOne({ where: { [Op.and]: [{ email }, { password }] } })
-        //   .then((user) => {
-        //     if (!user) {
-        //       console.log('Incorrect');
-        //       return done(null, false, { message: 'Incorrect email or password.' });
-        //     }
-        //     console.log('login success');
-        //     return done(null, user, { message: 'Logged In Successfully' });
-        //   })
-        //   .catch((err) => {
-        //     console.log('login fail');
-        //     return done(err);
-        //   });
       },
     ),
   );

@@ -1,9 +1,10 @@
 import styles from './App.module.css';
-import Footer from './components/footer/footer';
-import Header from './components/header/header.jsx';
-import Section from './components/section/section';
-import SignIn from './components/signInModal/signin';
-import TakeTour from './components/takeTour/takeTour.jsx';
+import Footer from './jsx/pages/layouts/footer/footer.jsx';
+import Header from './jsx/pages/layouts/header/header.jsx';
+import Section from './jsx/pages/home/section.jsx';
+import SignIn from './jsx/pages/signIn/signin.jsx';
+import TakeTour from './jsx/pages/takeTour/takeTour.jsx';
+
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import Store from './store.js';
 

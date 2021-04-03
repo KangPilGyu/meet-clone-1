@@ -1,6 +1,6 @@
-import { loginReducer } from './components/utility/loginReducer.js';
-import { positionReducer } from './components/utility/postionReducer.js';
-import { loginModalReducer } from './components/utility/loginModalReducer.js';
+import { loginReducer } from './jsx/utility/loginReducer.js';
+import { positionReducer } from './jsx/utility/postionReducer.js';
+import { loginModalReducer } from './jsx/utility/loginModalReducer.js';
 import React, { useReducer, useEffect } from 'react';
 import axios from 'axios';
 
@@ -44,7 +44,7 @@ const Store = (props) => {
     let token = localStorage.getItem('jwt');
     if (token) {
       axios
-        .get('/api/user')
+        .get('/api/users')
         .then((res) => {
           console.log(res);
           loginDispatch({ type: 'success' });

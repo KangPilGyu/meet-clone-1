@@ -77,7 +77,7 @@ module.exports = {
   localAuth: function (req, res) {
     passport.authenticate('local', { session: false }, (err, user) => {
       if (err || !user) {
-        return res.status(400).json({
+        return res.status(500).json({
           message: 'Something is not right',
           user: user,
         });
@@ -87,8 +87,14 @@ module.exports = {
           res.send(err);
         }
         const token = jwt.sign(JSON.stringify(user), dotenv.JWT_SECRET);
-        return res.json({ user, token });
+        const { password, ...data } = user.dataValues;
+        return res.json({ user: data, token, auth: true });
       });
     })(req, res);
+  },
+  profile: function (req, res, next) {
+    passport.authenticate('local', {
+      session: false,
+    })(req, res, next);
   },
 };

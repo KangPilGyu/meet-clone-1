@@ -8,10 +8,12 @@ const passort = require('passport');
 const passortConfing = require('./config/passport');
 const dotenv = require('dotenv').config().parsed;
 const cors = require('cors');
-const routesUser = require('./routes/users.js');
-const routesAuth = require('./routes/auth.js');
 const indexRouter = require('./routes/index');
-// const config = require('./config/jwtConfig');
+const jwtCookie = require('./config/jwtConfig');
+// healthcheck
+app.get('/helath-check', (req, res) => {
+  res.send('Health Success');
+});
 
 // redirect
 if (dotenv.APP_ENV === 'production') {
@@ -49,18 +51,15 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 // cookiejwt
-app.use(cookieParser());
+app.use(cookieParser(jwtCookie.jwt.secret));
 app.use(express.static(path.join(__dirname, 'public')));
 
 // passport conifg
 app.use(passort.initialize());
-app.use(passport.session());
 passortConfing();
 
 //routes handler
 app.use('/', indexRouter);
-app.use('/auth', routesAuth);
-app.use('/api', routesUser);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

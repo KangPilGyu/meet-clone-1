@@ -1,15 +1,17 @@
 {
-    "presets": ["@babel/preset-env"],
-    "plugins": [
-        [
-          "module-resolver",
-          {
-            "alias": {
-                "@": "./src",
-                "#helpers": "./helpers",
-                "#models": "./models",
-            }
-          }
-        ]
-      ]
+  "presets": ["@babel/preset-env"],
+  "plugins": [
+    [
+      "module-resolver",
+      {
+        "alias": {
+          "@": "./src",
+          "#helpers": "./helpers",
+          "#models": "./models",
+          "#controllers": "./controllers",
+          "#middlewares": "./middlewares"
+        }
+      }
+    ]
+  ]
 }
