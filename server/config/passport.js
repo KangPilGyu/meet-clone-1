@@ -9,8 +9,12 @@ const LocalStrategy = require('passport-local').Strategy;
 const GitHubStrategy = require('passport-github2').Strategy;
 const extractJwt = passportJwt.ExtractJwt;
 const dotenv = require('dotenv').config().parsed;
-
-let user = require('../models').User;
+const crypto = require('crypto');
+const { Op } = require('sequelize');
+const salt = require('./salt');
+var jwt = require('jsonwebtoken');
+let { user } = require('../models');
+let config = require('./jwtConfig');
 
 module.exports = () => {
   // Local Strategy
@@ -20,17 +24,36 @@ module.exports = () => {
         usernameField: 'email',
         passwordField: 'password',
       },
-      function (email, password, done) {
-        // 이 부분에선 저장되어 있는 User를 비교하면 된다.
-        return user
-          .findOne({ where: { email: email, password: password } })
-          .then((user) => {
-            if (!user) {
-              return done(null, false, { message: 'Incorrect email or password.' });
-            }
-            return done(null, user, { message: 'Logged In Successfully' });
-          })
-          .catch((err) => done(err));
+      async function (email, password, done) {
+        var shasum = crypto.createHmac('sha512', salt.encryption);
+        shasum.update(password);
+        password = shasum.digest('hex');
+        console.log('localstrategy', email, password);
+        try {
+          let result = await user.findOne({ where: { [Op.and]: [{ email }, { password }] } });
+          console.log(result);
+          if (!result) {
+            return done(null, false, { message: 'Incorrect email or password.' });
+          }
+          return done(null, user, { message: 'Logged In Successfully' });
+        } catch (err) {
+          console.log(err);
+          return done(err);
+        }
+        // user
+        //   .findOne({ where: { [Op.and]: [{ email }, { password }] } })
+        //   .then((user) => {
+        //     if (!user) {
+        //       console.log('Incorrect');
+        //       return done(null, false, { message: 'Incorrect email or password.' });
+        //     }
+        //     console.log('login success');
+        //     return done(null, user, { message: 'Logged In Successfully' });
+        //   })
+        //   .catch((err) => {
+        //     console.log('login fail');
+        //     return done(err);
+        //   });
       },
     ),
   );

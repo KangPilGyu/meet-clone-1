@@ -1,5 +1,6 @@
 const createError = require('http-errors');
 const express = require('express');
+const app = express();
 const path = require('path');
 const cookieParser = require('cookie-parser');
 const logger = require('morgan');
@@ -10,8 +11,7 @@ const cors = require('cors');
 const routesUser = require('./routes/users.js');
 const routesAuth = require('./routes/auth.js');
 const indexRouter = require('./routes/index');
-
-const app = express();
+// const config = require('./config/jwtConfig');
 
 // redirect
 if (dotenv.APP_ENV === 'production') {
@@ -48,11 +48,13 @@ app.set('view engine', 'pug');
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+// cookiejwt
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 // passport conifg
 app.use(passort.initialize());
+app.use(passport.session());
 passortConfing();
 
 //routes handler

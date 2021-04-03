@@ -10,13 +10,14 @@ library.add(fab);
 const SocialLogin = () => {
   const responseGoogle = async (res) => {
     console.log(res);
-    await axios
-      .get('/api/user')
-      .then((res) => {
-        console.log(res.data);
-        alert('로그인 성공');
-      })
-      .catch((err) => console.error(err));
+    // console.log(res);
+    // await axios
+    //   .get('/api/user')
+    //   .then((res) => {
+    //     console.log(res.data);
+    //     alert('로그인 성공');
+    //   })
+    //   .catch((err) => console.error(err));
   };
 
   const responseKakao = (res) => {

@@ -1,9 +1,9 @@
 const dotenv = require('dotenv').config().parsed;
 const passport = require('passport');
-const { user } = require('../../../models');
 const crypto = require('crypto');
 const { Op } = require('sequelize');
 const salt = require('../../../config/salt');
+const { user } = require('../../../models');
 const jwt = require('jsonwebtoken');
 
 module.exports = {
@@ -35,17 +35,19 @@ module.exports = {
       console.log(err);
       // err를 app.js 로 에러헨들러로 넘겨준다.
       next(err);
+      1;
     }
   },
   signInController: async (req, res, next) => {
     console.log('hello signIn');
-    console.log(req.body);
     try {
+      console.log('hi');
       let { email, password } = req.body;
       var shasum = crypto.createHmac('sha512', salt.encryption);
       shasum.update(password);
       password = shasum.digest('hex');
       let result = await user.findOne({ where: { [Op.and]: [{ email }, { password }] } });
+      console.log(result);
       if (result === null) {
         console.log('sign-in fails');
         res.status(404).send({ auth: false, message: 'invalid user or invalid credentials' });

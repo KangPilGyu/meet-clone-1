@@ -24,12 +24,13 @@ const SignInForm = ({
     e.preventDefault();
     loginDispatch({ type: 'login' });
     await axios
-      .post('/api/signIn', {
+      .post('/api/signin', {
         email: email,
         password: password,
       })
       .then((res) => {
         // server did't give auth to client because it wasn't authenticated.
+        console.log(res);
         if (!res.data.auth) {
           loginDispatch({ type: 'authError' });
         } else {
@@ -46,10 +47,10 @@ const SignInForm = ({
       })
       .catch((err) => {
         console.log('pass err');
+        console.log(err);
         loginDispatch({
           type: 'error',
         });
-        console.log(loginState);
       });
   };
   return (
@@ -60,6 +61,7 @@ const SignInForm = ({
         <input
           className={styles.signInInput}
           type="text"
+          name="email"
           placeholder="Email"
           onChange={(e) => {
             loginDispatch({ type: 'field', field: 'email', value: e.currentTarget.value });
@@ -68,6 +70,7 @@ const SignInForm = ({
         <span className={styles.signInSubTitle}>password</span>
         <input
           className={styles.signInInput}
+          name="password"
           type="password"
           placeholder="Password"
           onChange={(e) => {

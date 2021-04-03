@@ -9,8 +9,18 @@ router.get('/', function (req, res, next) {
   res.send('respond with a resource');
 });
 
+router.post(
+  '/signin',
+  passport.authenticate('local', {
+    successRedirect: '/home',
+    failureRedirect: '/signin',
+    failureFlash: true,
+    successFlash: true,
+  }),
+);
+
 router.post('/signUp', userController.signUpController);
-router.post('/signIn', userController.signInController);
+// router.post('/signIn', userController.signInController);
 router.post('/signOut', userController.signOutController);
 router.get('/user', [authenticateToken], userController.userInfoController);
 router.post('/refreshToken', userController.getRefreshedToken);
